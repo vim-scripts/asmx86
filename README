@@ -1,0 +1,26 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=966
+
+This is a simple X86 assembly language syntax for VIM.  It's fairly indiscriminant about the assembler syntax you choose to use.  It recognises the mnemonics for "classic" intel opcodes, and the GNU (gas) "mode" characters appended to these opcodes.  This syntax script contains all known opcodes for the i486 instruction set, and register set.  
+
+History:
+This syntax was hacked using the asm-m68k syntax as a starting point.  (I built this using my intel 486 System Programmer Manual as a reference.)  Because I do a great deal of hacking on assembly language, for several architectures, I felt that a proper (Or at least somewhat better than all-cyan... ;-) syntax highlighting for each one was in order.  Because (at this time), I hack a lot on x86 ASM, I've whipped this up, to help me work on it.  This would not have been possible without several good scripts (C, C++, and m68kASM) to use as starting points, and to rip code from.
+
+Details:
+
+It is aware of the "arcane" instructions for dealing with protected memory activities.  It is also aware of the "CR", "DR", and "TR" register sets.  The syntax does not, at this time, check for validity of operands to your opcodes (To do so would make it unable to be assembler independant.)  It does not know about the conditional jump mnemonics however.  (It merely considers any j.{1,5} string to be a valid jump.)  
+
+The FPU instruction set is only partially recognised at this time.  
+
+The colour scheme is a bit over-done, perhaps, but I find it useful when debugging some complex projects.  (I've divided the opcodes into several classes... I/O, mov's, arithmetic, branching, other.)  
+
+I don't really change it much.  I whipped it up, because I needed some good colour highlighting on my editing of x86 code.  As such, I don't expect to maintain it.  If anyone does wish to take over the maintanance of it, or improve it in any way, I'd be much appreciative.
+
+Known Bugs:
+
+It gets a bit quirky sometimes on complex nesting of comment types.  The syntax is CPP aware, and tries to "grey-out" #if 0, etc.  If nesting several classes of comment, or placing your code shortly after a few variations of comment, you'll possibly have commented lines get syntax highlighted, or your uncommented lines get highlighted as comments.  I've not really figured out why.  A simple "^L" to force a redraw seems to solve the problem in any case, so it may just be a bug in the parser unit of my particular version of VIM (Which may be a bit old by now.)
+
+Any Assembly language isn't easy to hack.  Having a Syntax for it will not make you master it over night.  Having a syntax for a language you're familiar with will make your life much easier though.  
+
+Also, expect a few other ASM syntaxes, as I may get to them (Perhaps PPC, Alpha, SH, MiPS, perhaps even a classic PDP11... ;-) 
+
+Sorry about being *REALLY* verbose.
